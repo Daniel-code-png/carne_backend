@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991778516392",
+    "project_id": "carne-digital-f528a",
+    "storage_bucket": "carne-digital-f528a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991778516392:android:d57cb0174cf7e3e8a9c19d",
+        "android_client_info": {
+          "package_name": "com.carnetdigital.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASA5lpSCt9pFO7gF70C41w5695L-4_AGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

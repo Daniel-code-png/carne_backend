@@ -1,32 +1,17 @@
-const authService = require('../modules/auth/services/authService');
+const jwt = require('jsonwebtoken');
 
-/**
- * Middleware de autenticación JWT.
- * Extrae el token del header Authorization y lo verifica.
- * Agrega req.user con el payload decodificado.
- */
 const authMiddleware = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
-
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({
-        success: false,
-        message: 'Token de acceso requerido',
-      });
+      return res.status(401).json({ success: false, message: 'Token de acceso requerido' });
     }
-
     const token = authHeader.split(' ')[1];
-    const decoded = authService.verifyToken(token);
-
-    // Adjuntar usuario al request para uso en controladores
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
-  } catch (error) {
-    return res.status(error.status || 401).json({
-      success: false,
-      message: error.message || 'No autorizado',
-    });
+  } catch {
+    return res.status(401).json({ success: false, message: 'Token inválido o expirado' });
   }
 };
 
