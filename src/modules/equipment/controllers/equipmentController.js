@@ -1,4 +1,4 @@
-const equipmentService = require('../services/equipmentservice');
+const equipmentService = require('../services/equipmentService');
 
 class EquipmentController {
   async getAll(req, res) {
