@@ -5,6 +5,7 @@ mobile/node_modules/
 
 # Variables de entorno (Secretos)
 .env
+.env.example
 backend/.env
 
 # Expo / React Native

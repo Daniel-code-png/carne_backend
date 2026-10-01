@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const equipmentController = require('../controllers/equipmentController');
-const authMiddleware = require('../../../middlewares/authMiddleware');
+const { authMiddleware } = require('../../../middlewares/authMiddleware');
+
+router.use(authMiddleware);
 
 // GET /equipment — Obtener todos los equipos
 router.get('/', equipmentController.getAll.bind(equipmentController));
@@ -13,12 +15,12 @@ router.get('/stats', equipmentController.getStats.bind(equipmentController));
 router.get('/:id', equipmentController.getById.bind(equipmentController));
 
 // POST /equipment — Crear nuevo equipo (requiere autenticación)
-router.post('/', authMiddleware, equipmentController.create.bind(equipmentController));
+router.post('/', equipmentController.create.bind(equipmentController));
 
 // PUT /equipment/:id — Actualizar equipo (requiere autenticación)
-router.put('/:id', authMiddleware, equipmentController.update.bind(equipmentController));
+router.put('/:id', equipmentController.update.bind(equipmentController));
 
 // DELETE /equipment/:id — Eliminar equipo (requiere autenticación)
-router.delete('/:id', authMiddleware, equipmentController.delete.bind(equipmentController));
+router.delete('/:id', equipmentController.delete.bind(equipmentController));
 
 module.exports = router;

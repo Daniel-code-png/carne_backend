@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const loanSchema = new mongoose.Schema(
   {
+    university: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'University',
+      required: true,
+      index: true,
+    },
     equipment: { type: mongoose.Schema.Types.ObjectId, ref: 'Equipment', required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     registeredBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
